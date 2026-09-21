@@ -1,4 +1,4 @@
-# Figures_Erb_Marland_2026
+# Readme
 
 Code used to create figures, tables, and some calculations in Erb & Marland 2026: "Global carbon dioxide
 emissions from 1750–2022: the CDIAC-FF annual product".
