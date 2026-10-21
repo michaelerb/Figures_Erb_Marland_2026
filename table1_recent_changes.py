@@ -2,7 +2,6 @@
 # Calculate values for 2022 and change in the global and national data. Make a
 # table.
 #   Author: Michael Erb
-#   Date: 2/24/2026
 #==============================================================================
 
 import numpy as np
