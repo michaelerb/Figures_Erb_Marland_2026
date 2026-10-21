@@ -14,7 +14,7 @@ import scipy
 #%% LOAD DATA
 
 data_dir   = "C:/Users/erbm/Documents/GitHub/CDIAC-Fossil-Fuels/output/Products/Past_Products/CDIAC_2022/"
-output_dir = "C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/3rd_submission/analysis/figures/"
+output_dir = "C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/proofs/analysis/figures/"
 
 # Load the total data
 data_total = pd.read_excel(data_dir+'total.2022.xlsx')
@@ -54,7 +54,7 @@ dir_population = 'C:/Users/erbm/Documents/GitHub/CDIAC-Fossil-Fuels/data/Inputs/
 data_population = pd.read_excel(dir_population+'WPP2024_GEN_F01_DEMOGRAPHIC_INDICATORS_COMPACT.xlsx',skiprows=16)
 data_population = data_population.rename(columns={"Region, subregion, country or area *":"Location",
                                                   "Location code": "Location_code",
-                                                  "Total Population, as of 1 January (thousands)":"Population"})
+                                                  "Total Population, as of 1 July (thousands)":"Population"})
 data_population = data_population[['Location','Location_code','Year','Population']]
 
 
@@ -138,6 +138,9 @@ for i,nation_txt in enumerate(nations_top_10):
     values_all_df.loc[i+1,"Total_CO2"]         = round(data_nation_2022["Total"].values[0] / 1000)
     values_all_df.loc[i+1,"Population"]        = round(pop_nation_2022["Population"].values[0] / 1000)
     values_all_df.loc[i+1,"PerCapita"]         = round(data_nation_2022["Per capita"].values[0], 1)
+    #values_all_df.loc[i+1,"Total_CO2"]         = data_nation_2022["Total"].values[0]
+    #values_all_df.loc[i+1,"Population"]        = pop_nation_2022["Population"].values[0]
+    #values_all_df.loc[i+1,"PerCapita"]         = data_nation_2022["Per capita"].values[0]
     values_all_df.loc[i+1,"Emissions_change"]  = round(((data_nation_2022["Total"].values[0]      - data_nation_year_start["Total"].values[0])      / data_nation_year_start["Total"].values[0]) * 100, 1)
     values_all_df.loc[i+1,"Population_change"] = round(((pop_nation_2022["Population"].values[0]  - pop_nation_year_start["Population"].values[0])  / pop_nation_year_start["Population"].values[0]) * 100, 1)
     values_all_df.loc[i+1,"PerCapita_change"]  = round(((data_nation_2022["Per capita"].values[0] - data_nation_year_start["Per capita"].values[0]) / data_nation_year_start["Per capita"].values[0]) * 100, 1)
