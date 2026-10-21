@@ -18,7 +18,7 @@ save_instead_of_plot = True
 #%% LOAD DATA
 
 data_dir   = "C:/Users/erbm/Documents/GitHub/CDIAC-Fossil-Fuels/output/Products/Past_Products/CDIAC_2022/"
-output_dir = "C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/3rd_submission/analysis/figures/"
+output_dir = "C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/proofs/analysis/figures/"
 
 # Load the national data
 data_national = pd.read_excel(data_dir+'nation.1750_2022.xlsx')
@@ -89,14 +89,14 @@ for i,value_txt in enumerate(groups):
 #%% MAKE STACKPLOT OF TOTALS - REGIONAL
 
 # Make a time series
-plt.figure(figsize=(7,5))
+plt.figure(figsize=(14,4))
 ax1 = plt.subplot2grid((1,1),(0,0))
-ax1_inset = ax1.inset_axes([.01,0.14,.67,1],projection=ccrs.PlateCarree()); ax1_inset.set_extent([0,359.99,-60,86],ccrs.PlateCarree())
+ax1_inset = ax1.inset_axes([.01,.21,.4,.65],projection=ccrs.PlateCarree()); ax1_inset.set_extent([0,359.99,-60,86],ccrs.PlateCarree())
 
 ax1.stackplot(regional_total_all["Year"],np.transpose(regional_total_all[labels_regions])[::-1]/1000,labels=labels_regions[::-1],colors=colors_default)
 #ax1.stackplot(years_all,regional_total_all[::-1]/1000,labels=labels_regions[::-1],colors=colors_default)
 handles, labels = ax1.get_legend_handles_labels()
-ax1.legend(handles[::-1],labels[::-1],loc='upper left',ncol=4,fontsize=8)
+ax1.legend(handles[::-1],labels[::-1],loc='upper left',ncol=7,fontsize=10)
 ax1.set_ylabel('Emissions (Mt C)')
 ax1.set_xlabel('Year')
 ax1.set_title('Carbon emissions by continent',fontsize=14)

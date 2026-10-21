@@ -19,7 +19,7 @@ nations_to_plot_txt = 'top10'
 #%% LOAD DATA
 
 data_dir   = "C:/Users/erbm/Documents/GitHub/CDIAC-Fossil-Fuels/output/Products/Past_Products/CDIAC_2022/"
-output_dir = "C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/3rd_submission/analysis/figures/"
+output_dir = "C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/proofs/analysis/figures/"
 
 # Load the total data
 data_total = pd.read_excel(data_dir+'total.2022.xlsx')
@@ -251,7 +251,7 @@ for i,nation_txt in enumerate(nations_to_plot):
         elif i < 5: ax[i].set_ylim(0,800)
         else:       ax[i].set_ylim(0,250)
     #ax[i].set_title(nation_txt,fontsize=12)
-    ax[i].set_title(letters[i]+'. '+nation_txt,fontsize=12,loc='left')
+    ax[i].set_title('('+letters[i]+') '+nation_txt,fontsize=12,loc='left')
     #
     ax_right[i] = ax[i].twinx()
     ax_right[i].plot(years_nation,percapita_nation,c='tab:orange',label='Total per capita')
@@ -302,7 +302,7 @@ for i,nation_txt in enumerate(nations_to_plot):
     ax[i].set_xlim(1995,2022)
     #ax[i].set_xlim(1994.5,2022.5)
     #ax[i].set_title(nation_txt,fontsize=12)
-    ax[i].set_title(letters[i]+'. '+nation_txt,fontsize=15,loc='left')
+    ax[i].set_title('('+letters[i]+') '+nation_txt,fontsize=15,loc='left')
     print(data_totals['total'].iloc[-1]/1000)
 
 plt.suptitle('Sectoral carbon emissions from the '+title_txt,fontsize=24,y=0.96)

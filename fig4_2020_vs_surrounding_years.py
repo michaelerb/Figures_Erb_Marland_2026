@@ -14,7 +14,7 @@ save_instead_of_plot = True
 #%% LOAD DATA
 
 data_dir   = "C:/Users/erbm/Documents/GitHub/CDIAC-Fossil-Fuels/output/Products/Past_Products/CDIAC_2022/"
-output_dir = "C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/3rd_submission/analysis/figures/"
+output_dir = "C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/proofs/analysis/figures/"
 
 # Load the global data
 data_global = pd.read_excel(data_dir+'global.1750_2022.xlsx')
@@ -143,7 +143,7 @@ ax1 = plt.subplot2grid((1,1),(0,0))
 ax1.boxplot(values_2021_vs_2019_valid, showfliers=True, patch_artist=True,
             boxprops=dict(facecolor="lightblue", color="k"), zorder=5)
 ax1.axhline(y=100,c='gray',linestyle='--',linewidth=1)
-ax1.set_ylabel('Emission (%)')
+ax1.set_ylabel('Relative emissions (%)')
 #ax1.set_ylim([0,160])
 plt.xticks(fontsize=9, rotation=90)
 ax1.set_title('2021 emissions compared to 2019',fontsize=14)
@@ -197,7 +197,7 @@ for i,key_txt in enumerate(keys_all):
     """
     
 ax1.axhline(y=100,c='gray',linestyle='--',linewidth=1)
-ax1.set_ylabel('Emission (%)')
+ax1.set_ylabel('Relative emissions (%)')
 ax1.set_ylim([0,160])
 plt.xticks(fontsize=9, rotation=90)
 #plt.xticks(fontsize=9, rotation=0)
@@ -251,7 +251,7 @@ for i,key_txt in enumerate(keys_all):
     ax1.set_ylim(y_int[-1]+0.5,y_int[0]-0.5)
     ax1.set_yticks(y_int)
     ax1.set_yticklabels(nation_labels)
-    ax1.set_xlabel('Emission (%)')
+    ax1.set_xlabel('Relative emissions (%)')
     ax1.set_title('2020 emissions compared to 2019/2021 for largest changes\n'+key_txt,fontsize=14)
     #
     if save_instead_of_plot:

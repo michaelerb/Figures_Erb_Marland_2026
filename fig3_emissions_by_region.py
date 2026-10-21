@@ -15,7 +15,7 @@ save_instead_of_plot = True
 #%% LOAD DATA
 
 data_dir   = 'C:/Users/erbm/Documents/GitHub/CDIAC-Fossil-Fuels/output/Products/Past_Products/CDIAC_2022/'
-output_dir = 'C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/3rd_submission/analysis/figures/'
+output_dir = 'C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/proofs/analysis/figures/'
 
 # Load the national data
 data_national = pd.read_excel(data_dir+'nation.1750_2022.xlsx')
@@ -128,7 +128,7 @@ sectoral_total_all = np.array(data_sectoral_global[keys_sectoral]).transpose()
 labels_sectors = []
 for i,sector_txt in enumerate(keys_sectoral):
     value_sector = data_sectoral_global_2022[sector_txt].values[0]
-    labels_sectors.append(sector_txt+' ('+str(int(value_sector/1000))+')')
+    labels_sectors.append(sector_txt+' ('+str(int(round(value_sector/1000)))+')')
     #labels_sectors.append(letters[i]+'. '+sector_txt+' ('+str(int(value_sector/1000))+')')
 
 # Sort the sectors by their largest contribution

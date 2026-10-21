@@ -13,7 +13,7 @@ save_instead_of_plot = True
 
 #%% LOAD DATA
 
-output_dir = "C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/3rd_submission/analysis/figures/"
+output_dir = "C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/proofs/analysis/figures/"
 
 # Load the national data
 data_national_2022 = pd.read_excel('C:/Users/erbm/Documents/GitHub/CDIAC-Fossil-Fuels/output/Products/Past_Products/CDIAC_2022/nation.1750_2022.xlsx')
@@ -85,34 +85,41 @@ f,ax = plt.subplots(1,3,sharey=True,figsize=(18,6))
 
 ax[0].scatter(data_national_all['Total_2021'],data_national_all['Total_change_percent'],25,zorder=2)
 ax[0].set_xlim(-.1,30)
-ax[0].set_ylabel('Percent change, current product (%)',fontsize=10)
+ax[0].tick_params(axis="both",labelsize=12)
+ax[0].set_ylabel('Percent change, current product (%)',fontsize=13)
 
 ax[1].scatter(data_national_all['Total_2021'],data_national_all['Total_change_percent'],25,zorder=2)
+ax[1].tick_params(axis="both",labelsize=12)
 ax[1].set_xlim(30,300)
 
 ax[2].scatter(data_national_all['Total_2021'],data_national_all['Total_change_percent'],25,zorder=2)
+ax[2].tick_params(axis="both",labelsize=12)
 ax[2].set_xlim(300,3350)
 
 for i in range(n_nations):
     nation_txt   = data_national_all['Code'].iloc[i]
     value_total  = data_national_all['Total_2021'].iloc[i]
     value_change = data_national_all['Total_change_percent'].iloc[i]
-    if nation_txt in ["RUS","CAN","SAU","IDN"]: va = "top"
-    else: va = "bottom"
+    if nation_txt in ["RUS","CAN","SAU","IDN","SHN","BGD","ARE"]:
+        va = "top"
+        vertical_adjust = -1.75
+    else:
+        va = "bottom"
+        vertical_adjust = .75
     if nation_txt in countries_to_label:
         if data_national_all['Total_2021'].iloc[i] < 30:
-            ax[0].text(value_total,value_change,nation_txt,va=va)
+            ax[0].text(value_total,value_change+vertical_adjust,nation_txt,va=va)
         elif data_national_all['Total_2021'].iloc[i] < 300:
-            ax[1].text(value_total,value_change,nation_txt,va=va)
+            ax[1].text(value_total,value_change+vertical_adjust,nation_txt,va=va)
         else:
-            ax[2].text(value_total,value_change,nation_txt,va=va)
+            ax[2].text(value_total,value_change+vertical_adjust,nation_txt,va=va)
 
 for i in range(3):
     ax[i].axhline(y=0,linestyle='dashed',linewidth=1,color='gray',alpha=0.5)
     ax[i].set_ylim(-100,100)
-    ax[i].set_xlabel('Emissions in 2021, previous product (Mt C)',fontsize=10)
+    ax[i].set_xlabel('Emissions in 2021, previous product (Mt C)',fontsize=13)
 
-plt.suptitle('2021 emissions in current and previous products',fontsize=14,y=0.96)
+plt.suptitle('2021 emissions in current and previous products',fontsize=18,y=0.96)
 plt.subplots_adjust(top=0.9,wspace=.05)
 
 if save_instead_of_plot:

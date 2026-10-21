@@ -14,7 +14,7 @@ save_instead_of_plot = True
 #%% LOAD DATA
 
 data_dir = "C:/Users/erbm/Documents/GitHub/CDIAC-Fossil-Fuels/output/Products/Past_Products/CDIAC_2022/"
-output_dir = "C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/3rd_submission/analysis/figures/"
+output_dir = "C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/proofs/analysis/figures/"
 
 # Load the sectoral data
 data_sectoral = pd.read_excel(data_dir+'sectoral.1995_2022.xlsx')
@@ -124,7 +124,7 @@ ax = ax.ravel()
 for i,sector_txt in enumerate(keys_sectoral):
     ax[i].stackplot(years_all,regional_total_all[sector_txt][::-1]/1000,labels=labels_regions[::-1],colors=colors_regions[::-1])
     if sector_txt == 'Manufact, Constr, Non-Fuel Industry': sector_txt = 'Manufact, Constr, Non-Fuel'
-    ax[i].set_title(letters[i]+'. '+sector_txt,fontsize=11,loc="left")
+    ax[i].set_title('('+letters[i]+') '+sector_txt,fontsize=11,loc="left")
     ax[i].set_ylim(ymin=0)
     ax[i].set_xlim(1995,2022)
     #ax[i].set_xlim(1995,2022.5)
@@ -153,7 +153,7 @@ ax = ax.ravel()
 for i,sector_txt in enumerate(keys_sectoral):
     ax[i].fill_between(years_sectoral,sectoral_total_all[i,:]*0,sectoral_total_all[i,:]/1000)
     if sector_txt == 'Manufact, Constr, Non-Fuel Industry': sector_txt = 'Manufact, Constr, Non-Fuel'
-    ax[i].set_title(letters[i]+'. '+sector_txt,fontsize=11,loc="left")
+    ax[i].set_title('('+letters[i]+') '+sector_txt,fontsize=11,loc="left")
     ax[i].set_ylim(ymin=0)
     ax[i].set_xlim(1995,2022)
     #ax[i].set_xlim(1995,2022.5)

@@ -15,7 +15,7 @@ save_instead_of_plot = True
 #%% LOAD DATA
 
 data_dir   = "C:/Users/erbm/Documents/GitHub/CDIAC-Fossil-Fuels/output/Products/Past_Products/CDIAC_2022/"
-output_dir = "C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/3rd_submission/analysis/figures/"
+output_dir = "C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/proofs/analysis/figures/"
 
 # Load the total data
 data_total = pd.read_excel(data_dir+'total.2022.xlsx')
@@ -45,7 +45,7 @@ dir_lookup = 'C:/Users/erbm/Documents/GitHub/CDIAC-Fossil-Fuels/data/Lookups/'
 country_lookup = pd.read_excel(dir_lookup+'Country_Lookup.xlsx')
 country_lookup = country_lookup[["Country_ID","Country_Name_Short"]]
 country_lookup = country_lookup.rename(columns={"Country_ID":"Nation ID","Country_Name_Short":"Nation_short"})
-
+country_lookup.loc[country_lookup["Nation_short"] == "South Korea","Nation_short"] = "Rep. of Korea"
 
 #%% FORMAT THE DATA - NATIONAL
 
@@ -115,12 +115,12 @@ data_sectoral_selected = data_sectoral_selected.fillna(0)
 #%% SECTORAL - PERCENTAGE BY CATEGORY
 
 # Compute total of selected categories
-keys_categories = ['Elec&Heat','Industry','Transport','Household','Other']
+keys_categories = ['Electric, CHP, heat plants','Industry','Transport','Household','Other']
 data_categories_selected = data_sectoral_2022.copy()
 
 # Calculate the percentage for each category
 for key_txt in keys_categories:
-    if   key_txt == 'Elec&Heat': sectors_to_select = ["Electric, CHP, Heat Plants"]
+    if   key_txt == 'Electric, CHP, heat plants': sectors_to_select = ["Electric, CHP, Heat Plants"]
     elif key_txt == 'Industry':  sectors_to_select = ["Energy Industries Own Use",
                                                       "Manufact, Constr, Non-Fuel Industry",
                                                       "Commerce and Public Services"]
@@ -161,7 +161,7 @@ data_national_selected.plot(
     xlim = (0,100),
     legend = False,
     width = .9,
-    xlabel = 'Percent (%)',
+    xlabel = 'Share of national emissions (%)',
     ylabel = '',
     ax = ax1
     ).legend(ncol=1, fontsize=8, loc='lower center', bbox_to_anchor = (.12,-.26), title="(a) Fuel types")
@@ -178,7 +178,7 @@ data_sectoral_selected.plot(
     xlim = (0,100),
     legend = False,
     width = .9,
-    xlabel = 'Percent (%)',
+    xlabel = 'Share of national emissions (%)',
     ylabel = '',
     color = colors,
     ax = ax2
@@ -207,7 +207,7 @@ data_national_selected.plot(
     xlim = (0,100),
     legend = False,
     width = .9,
-    xlabel = 'Percent (%)',
+    xlabel = 'Share of national emissions (%)',
     ylabel = '',
     ax = ax1
     ).legend(ncol=3, fontsize=8, loc='lower center', bbox_to_anchor = (.5,-.15))
@@ -224,7 +224,7 @@ data_categories_selected.plot(
     xlim = (0,100),
     legend = False,
     width = .9,
-    xlabel = 'Percent (%)',
+    xlabel = 'Share of national emissions (%)',
     ylabel = '',
     color = colors,
     ax = ax2

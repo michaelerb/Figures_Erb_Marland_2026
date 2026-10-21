@@ -26,7 +26,7 @@ else: extra_txt = ' - '+category_to_plot
 #%% LOAD DATA
 
 data_dir   = "C:/Users/erbm/Documents/GitHub/CDIAC-Fossil-Fuels/output/Products/Past_Products/CDIAC_2022/"
-output_dir = "C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/3rd_submission/analysis/figures/"
+output_dir = "C:/Users/erbm/Dropbox/Academia/AppState/Manuscripts/Submitted/2026_Erb_Marland_CDIAC/proofs/analysis/figures/"
 
 # Load the national data
 data_national = pd.read_excel(data_dir+'nation.1750_2022.xlsx')
@@ -50,14 +50,14 @@ data_national.loc[data_national['Nation'] == 'Russian Federation', 'Nation']    
 data_national.loc[data_national['Nation'] == 'German Democratic Republic [former]', 'Nation']            = 'German Democratic Republic (East)'
 data_national.loc[data_national['Nation'] == 'Germany, Federal Republic of', 'Nation']                   = 'Federal Republic of Germany (West)'
 data_national.loc[data_national['Nation'] == 'Yugoslavia [former Socialist Federal Republic]', 'Nation'] = 'Yugoslavia'
-data_national.loc[data_national['Nation'] == 'The former Yugoslav Republic of Macedonia', 'Nation']      = 'Macedonia'
+data_national.loc[data_national['Nation'] == 'The former Yugoslav Republic of Macedonia', 'Nation']      = 'North Macedonia'
 country_lookup.loc[country_lookup['Country_Name'] == 'Union of Soviet Socialist Republics [former]', 'Country_Name']   = 'USSR'
 country_lookup.loc[country_lookup['Country_Name'] == 'Republic of Moldova', 'Country_Name']                            = 'Moldova'
 country_lookup.loc[country_lookup['Country_Name'] == 'Russian Federation', 'Country_Name']                             = 'Russia'
 country_lookup.loc[country_lookup['Country_Name'] == 'German Democratic Republic [former]', 'Country_Name']            = 'German Democratic Republic (East)'
 country_lookup.loc[country_lookup['Country_Name'] == 'Germany, Federal Republic of', 'Country_Name']                   = 'Federal Republic of Germany (West)'
 country_lookup.loc[country_lookup['Country_Name'] == 'Yugoslavia [former Socialist Federal Republic]', 'Country_Name'] = 'Yugoslavia'
-country_lookup.loc[country_lookup['Country_Name'] == 'The former Yugoslav Republic of Macedonia', 'Country_Name']      = 'Macedonia'
+country_lookup.loc[country_lookup['Country_Name'] == 'The former Yugoslav Republic of Macedonia', 'Country_Name']      = 'North Macedonia'
 
 
 #%% SETUP
@@ -119,7 +119,7 @@ order_countries["Germany"] = ['Germany',
                               'Federal Republic of Germany (West)']
 order_countries["Yugoslavia"] = ['Yugoslavia',
                                  'Croatia',
-                                 'Macedonia',
+                                 'North Macedonia',
                                  'Slovenia',
                                  'Bosnia and Herzegovina',
                                  'Kosovo',
@@ -172,7 +172,7 @@ for num,collection_selected in enumerate(['Germany','Soviet Union','Yugoslavia']
     if collection_selected == 'Yugoslavia': ax[num].set_ylim(0,37)
     ax[num].set_xlim(1899.5,2022.5)
     ax[num].set_ylabel('Emissions (Mt C)')
-    ax[num].set_title(letters[num]+'. '+collection_selected+extra_txt,fontsize=14,loc='left')
+    ax[num].set_title('('+letters[num]+') '+collection_selected+extra_txt,fontsize=14,loc='left')
 
 ax[2].set_xlabel('Year')
 if save_instead_of_plot:
